@@ -9,35 +9,36 @@ Kirby::plugin('schnti/photoswipe', [
 	'tags'    => [
 		'photoswipe' => [
 			'attr' => [
-				// image
+				// thumb
 				'width',
 				'height',
 				'quality',
-				// thumb
-				'thumbwidth',
-				'thumbheight',
-				'thumbquality',
-				'thumbcrop',
+				'crop',
+				// image
+				'lightboxwidth',
+				'lightboxheight',
+				'lightboxquality',
 			],
 			'html' => function ($tag) {
 
 				$file = $tag->parent()->file($tag->value);
 
-				// image
-				$width = $tag->width ?? 1000;
-				$height = $tag->height ?? null;
-				$quality = $tag->quality ?? 90;
+				// Small preview thumb
+				$thumbWidth = $tag->width ?? 500;
+				$thumbHeight = $tag->height ?? null;
+				$thumbQuality = $tag->quality ?? 80;
+				$thumbCrop = boolval($tag->crop);
 
-				// thumb
-				$thumbWidth = $tag->thumbwidth ?? 500;
-				$thumbHeight = $tag->thumbheight ?? null;
-				$thumbQuality = $tag->thumbquality ?? 90;
-				$thumbCrop = boolval($tag->thumbcrop);
+				// Large lightbox image
+				$imageWidth = $tag->width ?? 1000;
+				$imageHeight = $tag->height ?? null;
+				$imageQuality = $tag->quality ?? 90;
 
+				// CSS CLass
 				$class = option('schnti.photoswipe.class');
 
-				$image = clone $file->thumb(['width' => $width, 'height' => $height, 'quality' => $quality]);
 				$thumb = clone $file->thumb(['width' => $thumbWidth, 'height' => $thumbHeight, 'quality' => $thumbQuality, 'crop' => $thumbCrop]);
+				$image = clone $file->thumb(['width' => $imageWidth, 'height' => $imageHeight, 'quality' => $imageQuality]);
 
 				return Tpl::load(__DIR__ . DS . 'snippets' . DS . 'tag.php', ['class' => $class, 'image' => $image, 'thumb' => $thumb]);
 			}

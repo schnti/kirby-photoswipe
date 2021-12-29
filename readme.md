@@ -2,6 +2,10 @@
 
 A plugin for [Kirby 3 CMS](http://getkirby.com) that adds [photoswipe](http://photoswipe.com/) v5 Beta.
 
+As of PhotoSwipe version v5 Beta, the integration of PhotoSwipe has become much easier.
+The Kirby plugin is only needed if the PhotoSwipe tag is required.
+Otherwise it is recommended to integrate PhotoSwipe without this plugin: https://photoswipe.com/v5/docs/getting-started/
+
 ## Commercial Usage
 
 This plugin is free but if you use it in a commercial project please consider
@@ -35,7 +39,7 @@ Run these commands to update the plugin:
 ### Composer
 
 ```
-composer require schnti/photoswipe
+composer require schnti/photoswipe:1.0.0-beta
 ```
 
 ### Install PhotoSwipe
@@ -91,9 +95,8 @@ lightbox.init();
             <a href="<?= $pic->url(); ?>"
                data-pswp-width="<?= $pic->width(); ?>"
                data-pswp-height="<?= $pic->height(); ?>"
-               title="<?= $image->text()->value(); ?>"
                target="_blank">
-                <img class="img-fluid" src="<?= $image->crop(600, 380, 80)->url(); ?>" alt="<?= $page->title()->value() ?> <?= $image->text()->value(); ?>"/>
+                <img class="img-fluid" src="<?= $image->crop(600, 380, 80)->url(); ?>" alt="<?= $image->alt()->kirbytextinline() ?>"/>
             </a>
 
             <figcaption><?= $image->alt()->kirbytextinline() ?></figcaption>
@@ -116,15 +119,26 @@ lightbox.init();
 
 #### Tag Attributes
 
-**Thumbnail**
+**Small preview thumb**
 
-* **width**: Integer (thumbnail resize width, default: 300)
+* **width**: Integer (thumbnail resize width, default: 500)
 * **height**: Integer (thumbnail resize height, default: null)
-* **quality**: Integer (jpeg quality from 0 to 100, default: 70)
+* **quality**: Integer (jpeg quality from 0 to 100, default: 80)
 * **crop**: Boolean (enable cropping the file according to the given width and height parameters, default: false)
 
-**Image**
+**Large lightbox image**
 
-* **pwidth**: Integer (image resize widt, default: 1000)
-* **pheight**: Integer (image resize height, default: null)
-* **pquality**: Integer (jpeg quality from 0 to 100, default: 80)
+* **lightboxwidth**: Integer (image resize width, default: 1000)
+* **lightboxheight**: Integer (image resize height, default: null)
+* **lightboxquality**: Integer (jpeg quality from 0 to 100, default: 90)
+
+
+## Options
+
+You can change the default gallery css selector width in `/site/config/config.php`:
+
+```php
+return [
+  'schnti.photoswipe.class' => 'photoswipe',
+];
+```
