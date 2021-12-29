@@ -1,47 +1,46 @@
 <?php
 
+use Kirby\Toolkit\Tpl;
+
 Kirby::plugin('schnti/photoswipe', [
-	'snippets' => [
-		'photoswipe' => __DIR__ . '/snippets/pswp.php'
+	'options' => [
+		'class' => 'photoswipe',
+	],
+	'tags'    => [
+		'photoswipe' => [
+			'attr' => [
+				// image
+				'width',
+				'height',
+				'quality',
+				// thumb
+				'thumbwidth',
+				'thumbheight',
+				'thumbquality',
+				'thumbcrop',
+			],
+			'html' => function ($tag) {
+
+				$file = $tag->parent()->file($tag->value);
+
+				// image
+				$width = $tag->width ?? 1000;
+				$height = $tag->height ?? null;
+				$quality = $tag->quality ?? 90;
+
+				// thumb
+				$thumbWidth = $tag->thumbwidth ?? 500;
+				$thumbHeight = $tag->thumbheight ?? null;
+				$thumbQuality = $tag->thumbquality ?? 90;
+				$thumbCrop = boolval($tag->thumbcrop);
+
+				$class = option('schnti.photoswipe.class');
+
+				$image = clone $file->thumb(['width' => $width, 'height' => $height, 'quality' => $quality]);
+				$thumb = clone $file->thumb(['width' => $thumbWidth, 'height' => $thumbHeight, 'quality' => $thumbQuality, 'crop' => $thumbCrop]);
+
+				return Tpl::load(__DIR__ . DS . 'snippets' . DS . 'tag.php', ['class' => $class, 'image' => $image, 'thumb' => $thumb]);
+			}
+		]
 	]
 ]);
-
-//$kirby->set('tag', 'photoswipe', array(
-//	'attr' => array(
-//		// thumb
-//		'width',
-//		'height',
-//		'quality',
-//		'crop',
-//		// image
-//		'pwidth',
-//		'pheight',
-//		'pquality',
-//		// settings
-//		'class',
-//		'text'
-//	),
-//	'html' => function ($tag) {
-//
-//		$url = $tag->attr('photoswipe');
-//		$file = $tag->file($url);
-//
-//		$imageWidth = $tag->attr('pwidth', 1000);
-//		$imageHeight = $tag->attr('pheight', null);
-//		$imageQuality = $tag->attr('pquality', 80);
-//
-//		$thumbWidth = $tag->attr('width', 300);
-//		$thumbHeight = $tag->attr('height', null);
-//		$thumbQuality = $tag->attr('quality', 70);
-//		$thumbCrop = $tag->attr('crop', false);
-//
-//		$class = $tag->attr('class', 'img-responsive');
-//
-//		$text = $tag->attr('text', '');
-//
-//		$image = clone $file->thumb(['width' => $imageWidth, 'height' => $imageHeight, 'quality' => $imageQuality]);
-//		$thumb = clone $file->thumb(['width' => $thumbWidth, 'height' => $thumbHeight, 'quality' => $thumbQuality, 'crop' => $thumbCrop]);
-//
-//		return tpl::load(__DIR__ . DS . 'templates' . DS . 'tag.php', ['image' => $image, 'thumb' => $thumb, 'class' => $class, 'text' => $text]);
-//	}
-//));
