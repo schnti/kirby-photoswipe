@@ -30,9 +30,9 @@ Kirby::plugin('schnti/photoswipe', [
 				$thumbCrop = boolval($tag->crop);
 
 				// Large lightbox image
-				$imageWidth = $tag->width ?? 1000;
-				$imageHeight = $tag->height ?? null;
-				$imageQuality = $tag->quality ?? 90;
+				$imageWidth = $tag->lightboxwidth ?? 1000;
+				$imageHeight = $tag->lightboxheight ?? null;
+				$imageQuality = $tag->lightboxquality ?? 90;
 
 				// CSS CLass
 				$class = option('schnti.photoswipe.class');
