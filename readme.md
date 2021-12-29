@@ -39,7 +39,7 @@ Run these commands to update the plugin:
 ### Composer
 
 ```
-composer require schnti/photoswipe:1.0.0-beta
+composer require schnti/photoswipe:dev-PhotoSwipe-v5
 ```
 
 ### Install PhotoSwipe
