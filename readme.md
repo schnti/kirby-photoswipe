@@ -1,8 +1,8 @@
 # PhotoSwipe plugin
 
-A plugin for [Kirby 3 CMS](http://getkirby.com) that adds [photoswipe](http://photoswipe.com/) v5 Beta.
+A plugin for [Kirby 3 CMS](http://getkirby.com) that adds [photoswipe](http://photoswipe.com/) v5.
 
-As of PhotoSwipe version v5 Beta, the integration of PhotoSwipe has become much easier.
+As of PhotoSwipe version v5, the integration of PhotoSwipe has become much easier.
 The Kirby plugin is only needed if the PhotoSwipe tag is required.
 Otherwise it is recommended to integrate PhotoSwipe without this plugin: https://photoswipe.com/v5/docs/getting-started/
 
@@ -39,16 +39,17 @@ Run these commands to update the plugin:
 ### Composer
 
 ```
-composer require schnti/photoswipe:dev-PhotoSwipe-v5
+composer require schnti/photoswipe
 ```
 
 ### Install PhotoSwipe
 
 ```
-npm install --save git://github.com/dimsemenov/photoswipe#v5-beta
+npm install --save photoswipe
 ```
 
 #### JS
+
 ```
 import PhotoSwipeLightbox from 'photoswipe/dist/photoswipe-lightbox.esm.js';
 import PhotoSwipe from 'photoswipe/dist/photoswipe.esm.js';
@@ -66,6 +67,7 @@ lightbox.init();
 ```
 
 #### CSS/SCSS
+
 ```
 @import "~photoswipe/src/photoswipe.css";
 ```
@@ -121,17 +123,16 @@ lightbox.init();
 
 **Small preview thumb**
 
-* **width**: Integer (thumbnail resize width, default: 500)
-* **height**: Integer (thumbnail resize height, default: null)
-* **quality**: Integer (jpeg quality from 0 to 100, default: 80)
-* **crop**: Boolean (enable cropping the file according to the given width and height parameters, default: false)
+- **width**: Integer (thumbnail resize width, default: 500)
+- **height**: Integer (thumbnail resize height, default: null)
+- **quality**: Integer (jpeg quality from 0 to 100, default: 80)
+- **crop**: Boolean (enable cropping the file according to the given width and height parameters, default: false)
 
 **Large lightbox image**
 
-* **lightboxwidth**: Integer (image resize width, default: 1000)
-* **lightboxheight**: Integer (image resize height, default: null)
-* **lightboxquality**: Integer (jpeg quality from 0 to 100, default: 90)
-
+- **lightboxwidth**: Integer (image resize width, default: 1000)
+- **lightboxheight**: Integer (image resize height, default: null)
+- **lightboxquality**: Integer (jpeg quality from 0 to 100, default: 90)
 
 ## Options
 
