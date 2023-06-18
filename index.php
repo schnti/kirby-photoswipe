@@ -14,6 +14,7 @@ Kirby::plugin('schnti/photoswipe', [
 				'height',
 				'quality',
 				'crop',
+				'thumbclass',
 				// image
 				'lightboxwidth',
 				'lightboxheight',
@@ -29,6 +30,8 @@ Kirby::plugin('schnti/photoswipe', [
 				$thumbQuality = $tag->quality ?? 80;
 				$thumbCrop = boolval($tag->crop);
 
+				$thumbClass = $tag->thumbclass ?? 'img-fluid';
+
 				// Large lightbox image
 				$imageWidth = $tag->lightboxwidth ?? 1000;
 				$imageHeight = $tag->lightboxheight ?? null;
@@ -40,7 +43,7 @@ Kirby::plugin('schnti/photoswipe', [
 				$thumb = clone $file->thumb(['width' => $thumbWidth, 'height' => $thumbHeight, 'quality' => $thumbQuality, 'crop' => $thumbCrop]);
 				$image = clone $file->thumb(['width' => $imageWidth, 'height' => $imageHeight, 'quality' => $imageQuality]);
 
-				return Tpl::load(__DIR__ . DS . 'snippets' . DS . 'tag.php', ['class' => $class, 'image' => $image, 'thumb' => $thumb]);
+				return Tpl::load(__DIR__ . DS . 'snippets' . DS . 'tag.php', ['class' => $class, 'image' => $image, 'thumb' => $thumb, 'thumbClass' => $thumbClass]);
 			}
 		]
 	]
