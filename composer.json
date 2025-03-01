@@ -1,9 +1,9 @@
 {
   "name": "schnti/photoswipe",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "kirby-plugin",
-  "description": "A plugin for Kirby 3 CMS to intecrate photoswipe",
-  "homepage": "https://github.com/schnti/kirby3-photoswipe",
+  "description": "A plugin for Kirby CMS to intecrate photoswipe",
+  "homepage": "https://github.com/schnti/kirby-photoswipe",
   "authors": [
     {
       "name": "Timo Schneider",
@@ -13,9 +13,9 @@
   ],
   "license": "MIT",
   "keywords": [
-    "kirby3",
-    "kirby3-cms",
-    "kirby3-plugin"
+    "kirby",
+    "kirby-cms",
+    "kirby-plugin"
   ],
   "require": {
     "getkirby/composer-installer": "^1.1"
