@@ -1,6 +1,6 @@
 # PhotoSwipe plugin
 
-A plugin for [Kirby 3 CMS](http://getkirby.com) that adds [photoswipe](http://photoswipe.com/) v5.
+A plugin for [Kirby CMS](http://getkirby.com) that adds [photoswipe](http://photoswipe.com/) v5.
 
 As of PhotoSwipe version v5, the integration of PhotoSwipe has become much easier.
 The Kirby plugin is only needed if the PhotoSwipe tag is required.
@@ -17,14 +17,14 @@ This plugin is free but if you use it in a commercial project please consider
 
 ### Download
 
-[Download the files](https://github.com/schnti/kirby3-photoswipe/archive/master.zip) and place them inside `site/plugins/photoswipe`.
+[Download the files](https://github.com/schnti/kirby-photoswipe/archive/master.zip) and place them inside `site/plugins/photoswipe`.
 
 ### Git Submodule
 
 You can add the plugin as a Git submodule.
 
     $ cd your/project/root
-    $ git submodule add https://github.com/schnti/kirby3-photoswipe.git site/plugins/photoswipe
+    $ git submodule add https://github.com/schnti/kirby-photoswipe.git site/plugins/photoswipe
     $ git submodule update --init --recursive
     $ git commit -am "Add Kirby PhotoSwipe plugin"
 
